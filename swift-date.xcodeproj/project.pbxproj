@@ -34,6 +34,7 @@
 		A2BBC45C19700B10003CB6E9 /* swift_dateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_dateTests.swift; sourceTree = "<group>"; };
 		A2BBC46619700D65003CB6E9 /* date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = date.swift; sourceTree = "<group>"; };
 		A2BBC46919700DCC003CB6E9 /* dateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateTests.swift; sourceTree = "<group>"; };
+		A2BBC46B19701015003CB6E9 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 				A2BBC44F19700B10003CB6E9 /* swift-date.h */,
 				A2BBC46619700D65003CB6E9 /* date.swift */,
 				A2BBC44D19700B10003CB6E9 /* Supporting Files */,
+				A2BBC46B19701015003CB6E9 /* MyPlayground.playground */,
 			);
 			path = "swift-date";
 			sourceTree = "<group>";

@@ -23,7 +23,16 @@ class dateTests: XCTestCase {
 
     func testExample() {
         // This is an example of a functional test case.
+        
         var d = Date()
+        var e = Date()
+        var f = e
+        var td = d - e
+        XCTAssertFalse(d == e, "test")
+        XCTAssertTrue(f == e, "test2")
+        XCTAssertTrue(d < e, "")
+        XCTAssertFalse(e < d, "")
+        Date(dateString: "2012-04-07")
     }
 
     func testPerformanceExample() {
