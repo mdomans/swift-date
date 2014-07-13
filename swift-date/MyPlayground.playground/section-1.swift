@@ -37,15 +37,25 @@ struct TimeDelta {
 }
 
 @infix func + (left:Date, right:TimeDelta) -> Date {
-    return Date();
+    var newDate = Date(calendar: left.calendar, timezone: left.timezone)
+    var opts:NSCalendarOptions = .MatchStrictly
+    newDate._date = left.calendar.dateByAddingComponents(right.components, toDate: left._date, options: opts)
+    return newDate;
+}
+
+@infix func - (left:Date, right:TimeDelta) -> Date {
+    var newDate = Date(calendar: left.calendar, timezone: left.timezone)
+    var opts:NSCalendarOptions = .MatchStrictly
+    newDate._date = left.calendar.dateByAddingComponents(right.components, toDate: left._date, options: opts)
+    return newDate;
 }
 
 @infix func - (left:Date, right:Date) -> TimeDelta {
     assert(left.calendar==right.calendar, "dates have to be from the same calendar")
     let calendar:NSCalendar = left.calendar
-    let calendarUnits:NSCalendarUnit = .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitSecond
-    let options:NSCalendarOptions = .MatchStrictly
-    let comps:NSDateComponents = calendar.components(calendarUnits, fromDate: left._date, toDate: right._date, options: options)
+    let calendarUnits:NSCalendarUnit = .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitSecond | .CalendarUnitNanosecond | .CalendarUnitWeekday | .CalendarUnitYear
+    let options:NSCalendarOptions = .WrapComponents
+    let comps:NSDateComponents = calendar.components(calendarUnits, fromDate: right._date, toDate: left._date, options: options)
     return TimeDelta(components: comps)
 }
 
@@ -60,15 +70,17 @@ struct TimeDelta {
 var d = Date()
 var e = Date()
 var f = e
-var td = d - e
+var td = e - d
 d == e
 f == e
 d < e
 e < d
-td.components.day
-td.components.second
-
 Date(dateString: "2012-04-07")
+
+var x = d + td
+x == e
+
+
 
 
 
