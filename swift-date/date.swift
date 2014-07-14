@@ -12,7 +12,7 @@ struct Date {
     var calendar:NSCalendar
     var timezone:NSTimeZone
     var dateComponents:NSDateComponents
-    var _date:NSDate
+    var date:NSDate
     
     
     var day:Int {
@@ -41,11 +41,25 @@ struct Date {
     }
     }
     
-    init(calendar:NSCalendar = NSCalendar.currentCalendar(), timezone:NSTimeZone = NSTimeZone(forSecondsFromGMT: 0), date:NSDate = NSDate()) {
+    init(
+        calendar:NSCalendar = NSCalendar.currentCalendar(),
+        timezone:NSTimeZone = NSTimeZone(forSecondsFromGMT: 0),
+        date:NSDate = NSDate()
+        ) {
         self.calendar = calendar
         self.timezone = timezone
         self.dateComponents = NSDateComponents()
-        self._date = date
+        self.date = date
+    }
+    init(day:Int, month:Int, year:Int, calendar:NSCalendar = NSCalendar.currentCalendar(),
+        timezone:NSTimeZone = NSTimeZone(forSecondsFromGMT: 0)) {
+            self.calendar = calendar
+            self.timezone = timezone
+            self.dateComponents = NSDateComponents()
+            self.dateComponents.day=day
+            self.dateComponents.month=month
+            self.dateComponents.year=year
+            self.date = self.calendar.dateFromComponents(self.dateComponents)
     }
     ///Creates a Date from given string, always remember that this method returns
     /// objects in NSTimeZone.localTimeZone()
@@ -61,7 +75,7 @@ struct Date {
     }
     
     func description() -> NSString {
-        return self._date.description
+        return self.date.description
     }
     
     static func parse(dateString:String) -> Date {
@@ -80,20 +94,69 @@ struct Date {
 
 struct TimeDelta {
     let components:NSDateComponents
+    init(components:NSDateComponents) {
+        self.components = components
+    }
+    init(hours:Int=0, minutes:Int=0, seconds:Int=0, days:Int=0, months:Int=0, years:Int=0, nanoseconds:Int=0) {
+        var comps:NSDateComponents = NSDateComponents()
+        var m = (minutes + seconds / 60)
+        var h = (hours +  m / 60)
+        var d = (days + h / 24)
+        comps.day = d 
+        comps.month = months
+        comps.year = years
+        comps.hour = h % 24
+        comps.minute = m % 60
+        comps.second = seconds % 60
+        comps.nanosecond = nanoseconds
+        self.components = comps
+    }
+}
 
+extension Int {
+    var hours:TimeDelta {
+    return TimeDelta(hours:self)
+    }
+    var minutes:TimeDelta {
+    return TimeDelta(minutes:self)
+    }
+    var seconds:TimeDelta {
+    return TimeDelta(seconds:self)
+    }
+    var years:TimeDelta {
+    return TimeDelta(years:self)
+    }
+    var months:TimeDelta {
+    return TimeDelta(years:self)
+    }
+    var days:TimeDelta {
+    return TimeDelta(days:self)
+    }
 }
 
 @infix func + (left:Date, right:TimeDelta) -> Date {
     var newDate = Date(calendar: left.calendar, timezone: left.timezone)
     var opts:NSCalendarOptions = .MatchStrictly
-    newDate._date = left.calendar.dateByAddingComponents(right.components, toDate: left._date, options: opts)
+    newDate.date = left.calendar.dateByAddingComponents(right.components, toDate: left.date, options: opts)
     return newDate;
+}
+
+@infix func + (left:TimeDelta, right:TimeDelta) -> TimeDelta {
+    return TimeDelta(
+        hours: left.components.hour+right.components.hour,
+        minutes: left.components.minute+right.components.minute,
+        seconds: left.components.second+right.components.second,
+        days: left.components.day+right.components.day,
+        months: left.components.month+right.components.month,
+        years: left.components.year+right.components.year,
+        nanoseconds: left.components.nanosecond + right.components.nanosecond
+    )
 }
 
 @infix func - (left:Date, right:TimeDelta) -> Date {
     var newDate = Date(calendar: left.calendar, timezone: left.timezone)
     var opts:NSCalendarOptions = .MatchStrictly
-    newDate._date = left.calendar.dateByAddingComponents(right.components, toDate: left._date, options: opts)
+    newDate.date = left.calendar.dateByAddingComponents(right.components, toDate: left.date, options: opts)
     return newDate;
 }
 
@@ -102,24 +165,34 @@ struct TimeDelta {
     let calendar:NSCalendar = left.calendar
     let calendarUnits:NSCalendarUnit = .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitSecond | .CalendarUnitNanosecond | .CalendarUnitWeekday | .CalendarUnitYear
     let options:NSCalendarOptions = .WrapComponents
-    let comps:NSDateComponents = calendar.components(calendarUnits, fromDate: right._date, toDate: left._date, options: options)
+    let comps:NSDateComponents = calendar.components(calendarUnits, fromDate: right.date, toDate: left.date, options: options)
     return TimeDelta(components: comps)
 }
 
 @infix func == (left:Date, right:Date) -> Bool {
-    return left._date.isEqualToDate(right._date)
+    return left.date.isEqualToDate(right.date)
+}
+
+@infix func == (left:TimeDelta, right:TimeDelta) -> Bool {
+    return left.components.year == right.components.year &&
+        left.components.month == right.components.month &&
+        left.components.day == right.components.day &&
+        left.components.hour == right.components.hour &&
+        left.components.minute == right.components.minute &&
+        left.components.second == right.components.second &&
+        left.components.nanosecond == right.components.nanosecond
 }
 
 @infix func ~= (left:Date, right:NSDate) -> Bool {
-    return left._date.isEqualToDate(right)
+    return left.date.isEqualToDate(right)
 }
 
 @infix func ~= (left:NSDate, right:Date) -> Bool {
-    return left.isEqualToDate(right._date)
+    return left.isEqualToDate(right.date)
 }
 
 @infix func < (left:Date, right:Date) -> Bool {
-    return left._date.laterDate(right._date) != left._date
+    return left.date.laterDate(right.date) != left.date
 }
 
 

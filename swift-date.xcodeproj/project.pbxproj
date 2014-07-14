@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A258864B1973EAFF0078D67C /* date.h in Headers */ = {isa = PBXBuildFile; fileRef = A258864A1973EAFF0078D67C /* date.h */; };
 		A2BBC45019700B10003CB6E9 /* swift-date.h in Headers */ = {isa = PBXBuildFile; fileRef = A2BBC44F19700B10003CB6E9 /* swift-date.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A2BBC45619700B10003CB6E9 /* swift-date.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BBC44A19700B10003CB6E9 /* swift-date.framework */; };
 		A2BBC45D19700B10003CB6E9 /* swift_dateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BBC45C19700B10003CB6E9 /* swift_dateTests.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A258864A1973EAFF0078D67C /* date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = date.h; sourceTree = "<group>"; };
 		A2BBC44A19700B10003CB6E9 /* swift-date.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "swift-date.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2BBC44E19700B10003CB6E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2BBC44F19700B10003CB6E9 /* swift-date.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-date.h"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				A2BBC46619700D65003CB6E9 /* date.swift */,
 				A2BBC44D19700B10003CB6E9 /* Supporting Files */,
 				A2BBC46B19701015003CB6E9 /* MyPlayground.playground */,
+				A258864A1973EAFF0078D67C /* date.h */,
 			);
 			path = "swift-date";
 			sourceTree = "<group>";
@@ -119,6 +122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2BBC45019700B10003CB6E9 /* swift-date.h in Headers */,
+				A258864B1973EAFF0078D67C /* date.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +415,7 @@
 				A2BBC46219700B10003CB6E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2BBC46319700B10003CB6E9 /* Build configuration list for PBXNativeTarget "swift-dateTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +424,7 @@
 				A2BBC46519700B10003CB6E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -23,6 +23,11 @@ class dateTests: XCTestCase {
         XCTAssertTrue(d < e, "")
         XCTAssertFalse(e < d, "")
         Date(dateString: "2012-04-07")
+        var twentieth_of_may2014 = Date(day: 20, month: 5, year: 2014)
+        XCTAssertTrue(twentieth_of_may2014.day==20, "")
+        XCTAssertTrue(twentieth_of_may2014.month==5, "")
+        XCTAssertTrue(twentieth_of_may2014.year==2014, "")
+
     }
     
     func dateFromComponents(day:Int, month:Int, year:Int, hour:Int, minute:Int, second:Int) -> NSDate {
@@ -90,7 +95,19 @@ class dateTests: XCTestCase {
         var aNSDateInstance = NSDate()
         var aDateInstance = Date(date:aNSDateInstance)
         XCTAssertTrue(aDateInstance ~= aNSDateInstance , "Date should be almost equal to NSDate")
-        
+    }
+    
+    func testSyntaxSugar() {
+        var timedelta = 5.days + 2.days + 3.hours + 32.seconds
+        XCTAssertTrue(120.seconds==2.minutes, "")
+        XCTAssertTrue(120.minutes==2.hours, "")
+        XCTAssertTrue(48.hours==2.days, "")
+        XCTAssertFalse(365.days==1.years, "")
+    }
+    
+    func testSugarCreation() {
+        XCTAssertTrue(Date(day: 10, month: 2, year: 2014)+2.days==Date(day: 12, month: 2, year: 2014), "")
+        XCTAssertTrue(Date(day: 10, month: 2, year: 2014)-2.years==Date(day: 12, month: 2, year: 2012), "")
     }
 
     func testPerformanceExample() {
