@@ -106,8 +106,10 @@ class dateTests: XCTestCase {
     }
     
     func testSugarCreation() {
+        Date(day: 12, month: 2, year: 2014) - 2.years == Date(day: 12, month: 2, year: 2012)
+        
         XCTAssertTrue(Date(day: 10, month: 2, year: 2014)+2.days==Date(day: 12, month: 2, year: 2014), "")
-        XCTAssertTrue(Date(day: 10, month: 2, year: 2014)-2.years==Date(day: 12, month: 2, year: 2012), "")
+        XCTAssertTrue(Date(day: 12, month: 2, year: 2014)-2.years==Date(day: 12, month: 2, year: 2012), "")
     }
 
     func testPerformanceExample() {

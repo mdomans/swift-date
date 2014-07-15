@@ -40,6 +40,11 @@ struct Date {
         return self.dateComponents.second
     }
     }
+    var nanosecond:Int {
+    get {
+        return self.dateComponents.nanosecond
+    }
+    }
     
     init(
         calendar:NSCalendar = NSCalendar.currentCalendar(),
@@ -49,13 +54,13 @@ struct Date {
         self.calendar = calendar
         self.timezone = timezone
         self.dateComponents = NSDateComponents()
+        self.dateComponents.timeZone = self.timezone
+        self.dateComponents.calendar = self.calendar
         self.date = date
     }
     init(day:Int, month:Int, year:Int, calendar:NSCalendar = NSCalendar.currentCalendar(),
         timezone:NSTimeZone = NSTimeZone(forSecondsFromGMT: 0)) {
-            self.calendar = calendar
-            self.timezone = timezone
-            self.dateComponents = NSDateComponents()
+            self.init()
             self.dateComponents.day=day
             self.dateComponents.month=month
             self.dateComponents.year=year
@@ -111,6 +116,7 @@ struct TimeDelta {
         comps.nanosecond = nanoseconds
         self.components = comps
     }
+
 }
 
 extension Int {
@@ -156,7 +162,15 @@ extension Int {
 @infix func - (left:Date, right:TimeDelta) -> Date {
     var newDate = Date(calendar: left.calendar, timezone: left.timezone)
     var opts:NSCalendarOptions = .MatchStrictly
-    newDate.date = left.calendar.dateByAddingComponents(right.components, toDate: left.date, options: opts)
+    let comps = NSDateComponents()
+    comps.year = -1 * right.components.year
+    comps.month = -1 * right.components.month
+    comps.day = -1 * right.components.day
+    comps.hour = -1 * right.components.hour
+    comps.minute = -1 * right.components.minute
+    comps.second = -1 * right.components.second
+    comps.nanosecond = -1 * right.components.nanosecond
+    newDate.date = left.calendar.dateByAddingComponents(comps, toDate: left.date, options: opts)
     return newDate;
 }
 
