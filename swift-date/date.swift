@@ -60,7 +60,11 @@ struct Date {
     }
     init(day:Int, month:Int, year:Int, calendar:NSCalendar = NSCalendar.currentCalendar(),
         timezone:NSTimeZone = NSTimeZone(forSecondsFromGMT: 0)) {
-            self.init()
+            self.calendar = calendar
+            self.timezone = timezone
+            self.dateComponents = NSDateComponents()
+            self.dateComponents.timeZone = self.timezone
+            self.dateComponents.calendar = self.calendar
             self.dateComponents.day=day
             self.dateComponents.month=month
             self.dateComponents.year=year

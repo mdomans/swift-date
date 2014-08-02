@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import swiftDate
 
 class dateTests: XCTestCase {
 
@@ -80,6 +81,11 @@ class dateTests: XCTestCase {
         XCTAssertFalse(date ~= self.dateFromComponents(10, month: 3, year: 2014, hour: 21, minute: 00, second: 00), "")
         XCTAssertTrue(date.timezone == NSTimeZone.localTimeZone(), "")
 
+    }
+    
+    func testDateStrings () {
+        XCTAssertTrue(Date(dateString: "2014-10-14")==Date(day: 14, month: 10, year: 2014), "")
+        XCTAssertTrue(Date(dateString: "14 October 2014")==Date(day: 14, month: 10, year: 2014), "")
     }
     
     func testComponents() {

@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double swift_dateVersionNumber;
 FOUNDATION_EXPORT const unsigned char swift_dateVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <swift_date/PublicHeader.h>
-
-#import <swift_date/date.h>

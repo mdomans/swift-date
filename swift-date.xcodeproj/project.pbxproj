@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A258864B1973EAFF0078D67C /* date.h in Headers */ = {isa = PBXBuildFile; fileRef = A258864A1973EAFF0078D67C /* date.h */; };
-		A2BBC45019700B10003CB6E9 /* swift-date.h in Headers */ = {isa = PBXBuildFile; fileRef = A2BBC44F19700B10003CB6E9 /* swift-date.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A2BBC45619700B10003CB6E9 /* swift-date.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BBC44A19700B10003CB6E9 /* swift-date.framework */; };
+		A2BBC45019700B10003CB6E9 /* swiftDate.h in Headers */ = {isa = PBXBuildFile; fileRef = A2BBC44F19700B10003CB6E9 /* swiftDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2BBC45619700B10003CB6E9 /* swiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BBC44A19700B10003CB6E9 /* swiftDate.framework */; };
 		A2BBC45D19700B10003CB6E9 /* swift_dateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BBC45C19700B10003CB6E9 /* swift_dateTests.swift */; };
 		A2BBC46719700D65003CB6E9 /* date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BBC46619700D65003CB6E9 /* date.swift */; };
 		A2BBC46819700D65003CB6E9 /* date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BBC46619700D65003CB6E9 /* date.swift */; };
@@ -28,9 +28,9 @@
 
 /* Begin PBXFileReference section */
 		A258864A1973EAFF0078D67C /* date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = date.h; sourceTree = "<group>"; };
-		A2BBC44A19700B10003CB6E9 /* swift-date.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "swift-date.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2BBC44A19700B10003CB6E9 /* swiftDate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swiftDate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2BBC44E19700B10003CB6E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2BBC44F19700B10003CB6E9 /* swift-date.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-date.h"; sourceTree = "<group>"; };
+		A2BBC44F19700B10003CB6E9 /* swiftDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swiftDate.h; sourceTree = "<group>"; };
 		A2BBC45519700B10003CB6E9 /* swift-dateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swift-dateTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2BBC45B19700B10003CB6E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2BBC45C19700B10003CB6E9 /* swift_dateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_dateTests.swift; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2BBC45619700B10003CB6E9 /* swift-date.framework in Frameworks */,
+				A2BBC45619700B10003CB6E9 /* swiftDate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +61,7 @@
 		A2BBC44019700B10003CB6E9 = {
 			isa = PBXGroup;
 			children = (
-				A2BBC44C19700B10003CB6E9 /* swift-date */,
+				A2BBC44C19700B10003CB6E9 /* swiftDate */,
 				A2BBC45919700B10003CB6E9 /* swift-dateTests */,
 				A2BBC44B19700B10003CB6E9 /* Products */,
 			);
@@ -70,21 +70,22 @@
 		A2BBC44B19700B10003CB6E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A2BBC44A19700B10003CB6E9 /* swift-date.framework */,
+				A2BBC44A19700B10003CB6E9 /* swiftDate.framework */,
 				A2BBC45519700B10003CB6E9 /* swift-dateTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A2BBC44C19700B10003CB6E9 /* swift-date */ = {
+		A2BBC44C19700B10003CB6E9 /* swiftDate */ = {
 			isa = PBXGroup;
 			children = (
-				A2BBC44F19700B10003CB6E9 /* swift-date.h */,
+				A2BBC44F19700B10003CB6E9 /* swiftDate.h */,
 				A2BBC46619700D65003CB6E9 /* date.swift */,
 				A2BBC44D19700B10003CB6E9 /* Supporting Files */,
 				A2BBC46B19701015003CB6E9 /* MyPlayground.playground */,
 				A258864A1973EAFF0078D67C /* date.h */,
 			);
+			name = swiftDate;
 			path = "swift-date";
 			sourceTree = "<group>";
 		};
@@ -121,7 +122,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2BBC45019700B10003CB6E9 /* swift-date.h in Headers */,
+				A2BBC45019700B10003CB6E9 /* swiftDate.h in Headers */,
 				A258864B1973EAFF0078D67C /* date.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,7 +145,7 @@
 			);
 			name = "swift-date";
 			productName = "swift-date";
-			productReference = A2BBC44A19700B10003CB6E9 /* swift-date.framework */;
+			productReference = A2BBC44A19700B10003CB6E9 /* swiftDate.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A2BBC45419700B10003CB6E9 /* swift-dateTests */ = {
@@ -344,7 +345,7 @@
 				INFOPLIST_FILE = "swift-date/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = swiftDate;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -361,7 +362,7 @@
 				INFOPLIST_FILE = "swift-date/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = swiftDate;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
